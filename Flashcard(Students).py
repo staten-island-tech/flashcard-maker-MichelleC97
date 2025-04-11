@@ -17,7 +17,7 @@ for every_correct in data_from_string:
         break
 for every_correct in data_from_string:
      
-if student == data_from_string["Word"]:
+    if student == data_from_string["Word"]:
         print(data_from_string["Definition"])
 while True:
     if student == data_from_string["Word"]:
