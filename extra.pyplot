@@ -1,0 +1,49 @@
+import matplotlib.pyplot as plt
+
+# Canvas dimensions
+canvas_width = 11
+canvas_height = 14
+
+# Center of the canvas
+center_x = canvas_width / 2
+center_y = canvas_height / 2
+
+# Golden ratio
+phi = 1.618
+
+# Positions of the golden ratio lines
+vertical_line_x = canvas_width / (1 + phi)
+horizontal_line_y = canvas_height / (1 + phi)
+
+# Create the figure and axis
+fig, ax = plt.subplots(figsize=(6, 8))
+ax.set_xlim(0, canvas_width)
+ax.set_ylim(0, canvas_height)
+ax.set_aspect('equal')
+
+# Draw the canvas rectangle
+rect = plt.Rectangle((0, 0), canvas_width, canvas_height, linewidth=1.5, edgecolor='black', facecolor='none')
+ax.add_patch(rect)
+
+# Draw center point
+ax.plot(center_x, center_y, 'ro', label='Canvas Center')
+
+# Draw golden ratio lines
+ax.axvline(x=vertical_line_x, color='blue', linestyle='--', label='Golden Ratio Vertical Line')
+ax.axhline(y=horizontal_line_y, color='green', linestyle='--', label='Golden Ratio Horizontal Line')
+
+# Draw intersection point B
+ax.plot(vertical_line_x, horizontal_line_y, 'purple', marker='o', label='Point B (Bowl Center)')
+
+# Draw line from center to point B
+ax.plot([center_x, vertical_line_x], [center_y, horizontal_line_y], 'orange', linestyle=':', label='Distance from Center to B')
+
+# Labels and legend
+ax.set_title('Canvas with Golden Ratio Lines')
+ax.legend(loc='lower right')
+ax.set_xlabel('Width (inches)')
+ax.set_ylabel('Height (inches)')
+
+plt.grid(True)
+plt.tight_layout()
+plt.show()
